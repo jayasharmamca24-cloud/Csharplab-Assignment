@@ -1,78 +1,42 @@
 ﻿using System;
 
-class UserProfile
+class Vehicle
 {
-    private string username;
-    private string password;
-    private string email;
+    public string Make;
+    public string Model;
+    public int Year;
+}
 
-    public void SetUsername(string uname)
+class Truck : Vehicle
+{
+    public void DisplayDetails()
     {
-        username = uname;
-    }
-
-    public string GetUsername()
-    {
-        return username;
-    }
-
-    public void SetPassword(string pwd)
-    {
-        if (pwd.Length >= 6)
-        {
-            password = pwd;
-        }
-        else
-        {
-            Console.WriteLine("Password must be at least 6 characters long.");
-        }
-    }
-
-    public string GetPassword()
-    {
-        return password;
-    }
-
-    public void SetEmail(string mail)
-    {
-        if (mail.Contains("@"))
-        {
-            email = mail;
-        }
-        else
-        {
-            Console.WriteLine("Invalid Email.");
-        }
-    }
-
-    public string GetEmail()
-    {
-        return email;
+        Console.WriteLine($"Truck: {Make}, {Model}, {Year}");
     }
 }
 
-class Program1
+class Bus : Vehicle
+{
+    public void DisplayDetails()
+    {
+        Console.WriteLine($"Bus: {Make}, {Model}, {Year}");
+    }
+}
+
+class Program2
 {
     static void Main()
     {
-        UserProfile user1 = new UserProfile();
-        user1.SetUsername("Jaya");
-        user1.SetPassword("12345"); // invalid
-        user1.SetPassword("123456"); // valid
-        user1.SetEmail("jayagmail.com"); // invalid
-        user1.SetEmail("jaya@gmail.com"); // valid
+        Truck t = new Truck();
+        t.Make = "Tata";
+        t.Model = "LPT 1613";
+        t.Year = 2020;
+        t.DisplayDetails();
 
-        Console.WriteLine("Username: " + user1.GetUsername());
-        Console.WriteLine("Password: " + user1.GetPassword());
-        Console.WriteLine("Email: " + user1.GetEmail());
-
-        UserProfile user2 = new UserProfile();
-        user2.SetUsername("khushi");
-        user2.SetPassword("abcdef");
-        user2.SetEmail("khushi@example.com");
-
-        Console.WriteLine("\nUsername: " + user2.GetUsername());
-        Console.WriteLine("Password: " + user2.GetPassword());
-        Console.WriteLine("Email: " + user2.GetEmail());
+        Bus b = new Bus();
+        b.Make = "Volvo";
+        b.Model = "9400XL";
+        b.Year = 2022;
+        b.DisplayDetails();
     }
 }
